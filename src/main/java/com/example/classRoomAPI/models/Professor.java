@@ -13,7 +13,7 @@ public class Professor {
     //CREANDO RELACION DE DOCENTE A CURSO (UNO A MUCHOS) un docente va con many courses
     @OneToMany(mappedBy = "professor")// aqui estamos llamando la varaible que asignamos en el Curse
     @JsonManagedReference
-    private List<Course> courses;
+    private List<Course> courses;// preguntar esto al profesor
 
     public Professor() {
     }

@@ -1,6 +1,10 @@
 package com.example.classRoomAPI.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.OneToMany;
+
 import java.time.LocalDate;
+import java.util.List;
 
 public class Student {
     private Integer idStudent;
@@ -8,6 +12,11 @@ public class Student {
     private LocalDate DOB;
     private String address;
 
+
+    //CREANDO RELACION DE DOCENTE A CURSO (UNO A MUCHOS) un docente va con many courses
+    @OneToMany(mappedBy = "student")// aqui estamos llamando la varaible que asignamos en el Curse
+    @JsonManagedReference
+    private List<Student>students ;// preguntar esto al profesor
     public Student() {
     }
 

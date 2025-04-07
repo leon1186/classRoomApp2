@@ -1,21 +1,41 @@
 package com.example.classRoomAPI.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
+
 import java.text.DecimalFormat;
 import java.time.LocalDate;
-
+@Entity
+@Table(name="Grades")
 public class Grade {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_grade")
     private Integer idGrade;
+
+    @Column(name = "grade" ,nullable = false)
     private DecimalFormat grade;
-    private LocalDate DOB;
+
+    @Column(name = "doe" ,nullable = false)
+    private LocalDate DOE;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_student",referencedColumnName ="idStudent")// con este creo el FK
+    @JsonBackReference
+    private Student student;
+    @ManyToOne
+    @JoinColumn(name = "fk_subject",referencedColumnName ="idSubject")// con este creo el FK
+    @JsonBackReference
+    private Subject subject;
 
 
     public Grade() {
     }
 
-    public Grade(Integer idGrade, DecimalFormat grade, LocalDate DOB) {
+    public Grade(Integer idGrade, DecimalFormat grade, LocalDate DOE) {
         this.idGrade = idGrade;
         this.grade = grade;
-        this.DOB = DOB;
+        this.DOE = DOE;
     }
 
     public Integer getIdGrade() {
@@ -34,12 +54,12 @@ public class Grade {
         this.grade = grade;
     }
 
-    public LocalDate getDOB() {
-        return DOB;
+    public LocalDate getDOE() {
+        return DOE;
     }
 
-    public void setDOB(LocalDate DOB) {
-        this.DOB = DOB;
+    public void setDOE(LocalDate DOE) {
+        this.DOE = DOE;
     }
 }
 
