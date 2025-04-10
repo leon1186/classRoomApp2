@@ -1,22 +1,38 @@
 package com.example.classRoomAPI.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
-
+@Entity
+@Table(name = "students")
 public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_student")
     private Integer idStudent;
+
+    @Column(name = "level")
     private Integer level;
+
+    @Column(name = "dob")
     private LocalDate DOB;
+
+    @Column(name = "address",length = 255,nullable = false)
     private String address;
 
 
     //CREANDO RELACION DE DOCENTE A CURSO (UNO A MUCHOS) un docente va con many courses
     @OneToMany(mappedBy = "student")// aqui estamos llamando la varaible que asignamos en el Curse
     @JsonManagedReference
-    private List<Student>students ;// preguntar esto al profesor
+    private List<Grade>grades ;// preguntar esto al profesor
+
+    @OneToMany(mappedBy = "student")
+    @JsonManagedReference
+    private List<Assistance>assists;
+
+
     public Student() {
     }
 

@@ -1,6 +1,9 @@
 package com.example.classRoomAPI.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name="courses")
@@ -15,11 +18,23 @@ public class Course {
     @Column(name = "name",length = 100,unique = false,nullable = false)//AQUI ESTAMOS ESPECIFICANDO NOT NULL ES VERDADERO
     private  String name;
 
+
+
+
     // CREANDO RALACION (MUCHOS A UNO)
     @ManyToOne
     @JoinColumn(name = "fk_professor",referencedColumnName ="idProfessor")// con este creo el FK
     @JsonBackReference
     private Professor professor;
+
+
+
+    @OneToMany(mappedBy = "course")
+    @JsonManagedReference
+    private List<Assistance>assists;
+
+
+
 
 
     public Course() {

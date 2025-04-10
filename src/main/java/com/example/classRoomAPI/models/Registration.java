@@ -1,10 +1,18 @@
 package com.example.classRoomAPI.models;
 
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
+@Entity
+@Table(name = "registrations")
 public class Registration {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_registration")
     private Integer idRegistration;
+
+    @Column(name = "dor")
     private LocalDate DOR;
 
     public Registration() {

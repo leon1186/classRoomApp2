@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 @Entity
-@Table(name="Grades")
+@Table(name="grades")
 public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

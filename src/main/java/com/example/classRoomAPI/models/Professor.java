@@ -2,12 +2,19 @@ package com.example.classRoomAPI.models;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
-
+@Entity
+@Table(name="professors")
 public class Professor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column( name = "id_professor")
     private Integer idProfessor;
+
+
+    @Column(name="speciality",length = 100,nullable = false)
     private String speciality;
 
     //CREANDO RELACION DE DOCENTE A CURSO (UNO A MUCHOS) un docente va con many courses

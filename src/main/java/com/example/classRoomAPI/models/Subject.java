@@ -1,17 +1,23 @@
 package com.example.classRoomAPI.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
-
+@Entity
+@Table(name = "subjects")
 public class Subject {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_subject")
     private Integer idSubject;
+
+    @Column(name = "name",length = 100,nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "subject")// aqui estamos llamando la varaible que asignamos en el Curse
     @JsonManagedReference
-    private List<Subject> subjects ;// preguntar esto al profesor
+    private List<Grade> subjects ;// preguntar esto al profesor
 
     public Subject() {
     }

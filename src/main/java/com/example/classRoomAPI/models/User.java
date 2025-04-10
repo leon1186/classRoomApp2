@@ -1,13 +1,28 @@
 package com.example.classRoomAPI.models;
 import com.example.classRoomAPI.helper.UserType;
+import jakarta.persistence.*;
 
-
+@Entity
+@Table(name = "user")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Integer userId;
+
+    @Column(name = "name",length = 100,nullable = false)
     private String name;
+
+    @Column(name = "password", length = 255,nullable = false)
     private String password;
+
+    @Column(name = "email",length = 150,unique = true,nullable = false)
     private String email;
+
+    @Column(name = "telephone",length = 20,nullable = true)
     private String telephone;
+
+
     private UserType userType;
 
     public User() {
