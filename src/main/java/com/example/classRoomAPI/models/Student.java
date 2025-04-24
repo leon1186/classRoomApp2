@@ -30,7 +30,7 @@ public class Student {
 
     @OneToMany(mappedBy = "student")
     @JsonManagedReference
-    private List<Assistance>assists;
+    private List<Attendance>assists;
 
 
     public Student() {

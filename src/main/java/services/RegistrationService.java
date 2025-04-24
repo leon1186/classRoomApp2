@@ -1,7 +1,6 @@
 package services;
 
 import com.example.classRoomAPI.models.Registration;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.IRegistrationRepository;

@@ -21,7 +21,7 @@ public class Course {
 
 
 
-    // CREANDO RALACION (MUCHOS A UNO)
+    // CREANDO RELACION (MUCHOS A UNO)
     @ManyToOne
     @JoinColumn(name = "fk_professor",referencedColumnName ="idProfessor")// con este creo el FK
     @JsonBackReference
@@ -31,7 +31,7 @@ public class Course {
 
     @OneToMany(mappedBy = "course")
     @JsonManagedReference
-    private List<Assistance>assists;
+    private List<Attendance>assists;
 
 
 

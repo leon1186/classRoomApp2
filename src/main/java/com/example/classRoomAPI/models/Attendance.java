@@ -2,17 +2,16 @@ package com.example.classRoomAPI.models;
 
 import com.example.classRoomAPI.helper.Status;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 @Entity
-@Table(name ="assists")
-public class Assistance {
+@Table(name ="attendances")
+public class Attendance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_assistance")
-    private Integer idAssistance;
+    @Column(name = "id_attendance")
+    private Integer idAttendance;
 
     @Column(name = "doa")
     private LocalDate DOA;
@@ -35,21 +34,21 @@ public class Assistance {
 
 
 
-    public Assistance() {
+    public Attendance() {
     }
 
-    public Assistance(Integer idAssistance, LocalDate DOA, Status status) {
-        this.idAssistance = idAssistance;
+    public Attendance(Integer idAttendance, LocalDate DOA, Status status) {
+        this.idAttendance = idAttendance;
         this.DOA = DOA;
         this.status = status;
     }
 
-    public Integer getIdAssistance() {
-        return idAssistance;
+    public Integer getIdAttendance() {
+        return idAttendance;
     }
 
-    public void setIdAssistance(Integer idAssistance) {
-        this.idAssistance = idAssistance;
+    public void setIdAttendance(Integer idAttendance) {
+        this.idAttendance = idAttendance;
     }
 
     public LocalDate getDOA() {
