@@ -1,35 +1,33 @@
-package services;
+package com.example.classRoomAPI.services;
 
 import com.example.classRoomAPI.helper.APImessages;
 import com.example.classRoomAPI.models.Attendance;
-import com.example.classRoomAPI.models.Grade;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.IGradeRepository;
-
+import com.example.classRoomAPI.repository.IAttendanceRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
-public class GradeService {
+public class AttendanceService {
     @Autowired
-    IGradeRepository repository;
+    IAttendanceRepository repository;
 
     //metodo para guardar
 
-    public Grade saveGrade(Grade gradeData) throws Exception {
+    public Attendance saveAttendance(Attendance attendanceData) throws Exception{
         try {
-            return this.repository.save(gradeData);
+            return this.repository.save(attendanceData);
 
-        } catch (Exception error) {
-            throw new Exception();
+        }catch (Exception error){
+            throw  new Exception();
         }
 
     }
 
-    public List<Grade> gradeList() throws Exception{
+    public List<Attendance>attendanceList() throws Exception{
         try{
             return this.repository.findAll();
 
@@ -37,13 +35,13 @@ public class GradeService {
             throw new Exception();
 
         }
-
     }
-    public Grade searchGradeById(Integer id) throws Exception {
+
+    public Attendance searchAttendanceById(Integer id) throws Exception {
         try {
-            Optional<Grade> gradeToSearchFor = this.repository.findById(id);
-            if (gradeToSearchFor.isPresent()) {
-                return gradeToSearchFor.get();
+            Optional<Attendance> attendanceToSearchFor = this.repository.findById(id);
+            if (attendanceToSearchFor.isPresent()) {
+                return attendanceToSearchFor.get();
             } else {
                 throw new Exception(APImessages.ERROR_PROFESSOR_NOT_FOUND.getMessage());// AQUI LLAMAMOS AL ENUM
             }
@@ -55,17 +53,17 @@ public class GradeService {
             throw new Exception(error.getMessage());
         }
     }
-    public Grade modifyGrade(Integer id, Grade newDataGrade) throws Exception {
+    public Attendance modifyAttendance(Integer id, Attendance newDataAttendance) throws Exception {
         try {
-            Optional<Grade> gradeSearchToEdit = this.repository.findById(id);
-            if (gradeSearchToEdit.isPresent()) {
+            Optional<Attendance> attendanceSearchToEdit = this.repository.findById(id);
+            if (attendanceSearchToEdit.isPresent()) {
                 // I MODIFY THE PROFFESOR
                 //aqui estoy abriendo toda la bosla con el get
                 // uso el set para camnbiar y no puede ser el id
-                gradeSearchToEdit.get().setGrade(newDataGrade.getGrade());// EN ESTE CASO ESTAMOS TRABAJANDO CON EL DATE OF ATTENDANCE.ELEGIR EL DATO CORRESPONDIENTE  E
+                attendanceSearchToEdit.get().setDOA(newDataAttendance.getDOA());// EN ESTE CASO ESTAMOS TRABAJANDO CON EL DATE OF ATTENDANCE.ELEGIR EL DATO CORRESPONDIENTE  E
 
                 //HOW I KEEP THE NEW MODIFY INFO
-                return this.repository.save(gradeSearchToEdit.get());
+                return this.repository.save(attendanceSearchToEdit.get());
 
 
             } else {
@@ -77,11 +75,11 @@ public class GradeService {
     }
 
     //METODO PARA ELIMINAR
-    public Boolean deleteGrade(Integer id) throws Exception {
+    public Boolean deleteAttendance(Integer id) throws Exception {
         try {
 
-            Optional<Grade> gradeToSearch = this.repository.findById(id);
-            if (gradeToSearch.isPresent()) {
+            Optional<Attendance> attendanceToSearch = this.repository.findById(id);
+            if (attendanceToSearch.isPresent()) {
                 //LO ELIMINO
                 this.repository.deleteById(id);
                 return true;
@@ -97,8 +95,4 @@ public class GradeService {
 
     }
 
-
-
-
 }
-

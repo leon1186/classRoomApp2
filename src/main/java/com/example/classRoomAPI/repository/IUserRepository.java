@@ -1,4 +1,4 @@
-package repository;
+package com.example.classRoomAPI.repository;
 
 import com.example.classRoomAPI.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;

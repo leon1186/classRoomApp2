@@ -1,34 +1,34 @@
-package services;
+package com.example.classRoomAPI.services;
 
 import com.example.classRoomAPI.helper.APImessages;
-import com.example.classRoomAPI.models.Attendance;
-import com.example.classRoomAPI.models.Professor;
+import com.example.classRoomAPI.models.Grade;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.IAttendanceRepository;
+import com.example.classRoomAPI.repository.IGradeRepository;
+
 
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
-public class AttendanceService {
+public class GradeService {
     @Autowired
-    IAttendanceRepository repository;
+    IGradeRepository repository;
 
     //metodo para guardar
 
-    public Attendance saveAttendance(Attendance attendanceData) throws Exception{
+    public Grade saveGrade(Grade gradeData) throws Exception {
         try {
-            return this.repository.save(attendanceData);
+            return this.repository.save(gradeData);
 
-        }catch (Exception error){
-            throw  new Exception();
+        } catch (Exception error) {
+            throw new Exception();
         }
 
     }
 
-    public List<Attendance>attendanceList() throws Exception{
+    public List<Grade> gradeList() throws Exception{
         try{
             return this.repository.findAll();
 
@@ -36,13 +36,13 @@ public class AttendanceService {
             throw new Exception();
 
         }
-    }
 
-    public Attendance searchAttendanceById(Integer id) throws Exception {
+    }
+    public Grade searchGradeById(Integer id) throws Exception {
         try {
-            Optional<Attendance> attendanceToSearchFor = this.repository.findById(id);
-            if (attendanceToSearchFor.isPresent()) {
-                return attendanceToSearchFor.get();
+            Optional<Grade> gradeToSearchFor = this.repository.findById(id);
+            if (gradeToSearchFor.isPresent()) {
+                return gradeToSearchFor.get();
             } else {
                 throw new Exception(APImessages.ERROR_PROFESSOR_NOT_FOUND.getMessage());// AQUI LLAMAMOS AL ENUM
             }
@@ -54,17 +54,17 @@ public class AttendanceService {
             throw new Exception(error.getMessage());
         }
     }
-    public Attendance modifyAttendance(Integer id, Attendance newDataAttendance) throws Exception {
+    public Grade modifyGrade(Integer id, Grade newDataGrade) throws Exception {
         try {
-            Optional<Attendance> attendanceSearchToEdit = this.repository.findById(id);
-            if (attendanceSearchToEdit.isPresent()) {
+            Optional<Grade> gradeSearchToEdit = this.repository.findById(id);
+            if (gradeSearchToEdit.isPresent()) {
                 // I MODIFY THE PROFFESOR
                 //aqui estoy abriendo toda la bosla con el get
                 // uso el set para camnbiar y no puede ser el id
-                attendanceSearchToEdit.get().setDOA(newDataAttendance.getDOA());// EN ESTE CASO ESTAMOS TRABAJANDO CON EL DATE OF ATTENDANCE.ELEGIR EL DATO CORRESPONDIENTE  E
+                gradeSearchToEdit.get().setGrade(newDataGrade.getGrade());// EN ESTE CASO ESTAMOS TRABAJANDO CON EL DATE OF ATTENDANCE.ELEGIR EL DATO CORRESPONDIENTE  E
 
                 //HOW I KEEP THE NEW MODIFY INFO
-                return this.repository.save(attendanceSearchToEdit.get());
+                return this.repository.save(gradeSearchToEdit.get());
 
 
             } else {
@@ -76,11 +76,11 @@ public class AttendanceService {
     }
 
     //METODO PARA ELIMINAR
-    public Boolean deleteAttendance(Integer id) throws Exception {
+    public Boolean deleteGrade(Integer id) throws Exception {
         try {
 
-            Optional<Attendance> attendanceToSearch = this.repository.findById(id);
-            if (attendanceToSearch.isPresent()) {
+            Optional<Grade> gradeToSearch = this.repository.findById(id);
+            if (gradeToSearch.isPresent()) {
                 //LO ELIMINO
                 this.repository.deleteById(id);
                 return true;
@@ -96,4 +96,8 @@ public class AttendanceService {
 
     }
 
+
+
+
 }
+

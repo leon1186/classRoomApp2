@@ -1,10 +1,10 @@
-package services;
+package com.example.classRoomAPI.services;
 
 import com.example.classRoomAPI.helper.APImessages;
 import com.example.classRoomAPI.models.Professor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.IProfessorRepository;
+import com.example.classRoomAPI.repository.IProfessorRepository;
 
 import java.util.List;
 import java.util.Optional;

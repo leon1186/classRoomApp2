@@ -1,12 +1,11 @@
-package services;
+package com.example.classRoomAPI.services;
 
 import com.example.classRoomAPI.helper.APImessages;
-import com.example.classRoomAPI.models.Attendance;
 import com.example.classRoomAPI.models.Subject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.ISubjectRepository;
+import com.example.classRoomAPI.repository.ISubjectRepository;
 
 import java.util.List;
 import java.util.Optional;

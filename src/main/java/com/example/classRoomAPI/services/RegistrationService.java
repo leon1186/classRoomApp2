@@ -1,9 +1,9 @@
-package services;
+package com.example.classRoomAPI.services;
 
 import com.example.classRoomAPI.models.Registration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.IRegistrationRepository;
+import com.example.classRoomAPI.repository.IRegistrationRepository;
 
 @Service
 public class RegistrationService {

@@ -1,4 +1,4 @@
-package services;
+package com.example.classRoomAPI.services;
 
 
 
@@ -7,7 +7,7 @@ import com.example.classRoomAPI.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import repository.IUserRepository;
+import com.example.classRoomAPI.repository.IUserRepository;
 
 import java.util.List;
 import java.util.Optional;
