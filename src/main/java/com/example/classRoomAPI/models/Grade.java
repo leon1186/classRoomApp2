@@ -20,11 +20,11 @@ public class Grade {
     private LocalDate DOE;
 
     @ManyToOne
-    @JoinColumn(name = "fk_student",referencedColumnName ="idStudent")// con este creo el FK
+    @JoinColumn(name = "fk_student",referencedColumnName ="id_student")// con este creo el FK
     @JsonBackReference
     private Student student;
     @ManyToOne
-    @JoinColumn(name = "fk_subject",referencedColumnName ="idSubject")// con este creo el FK
+    @JoinColumn(name = "fk_subject",referencedColumnName ="id_subject")// con este creo el FK
     @JsonBackReference
     private Subject subject;
 
